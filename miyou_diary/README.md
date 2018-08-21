@@ -1,4 +1,4 @@
-# miyou
+# miyou_diary
 
 > A Vue.js project
 

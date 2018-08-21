@@ -20,5 +20,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.wrapper{}
+.wrapper{
+  padding-bottom: 50px;
+}
 </style>

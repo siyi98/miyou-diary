@@ -1,6 +1,6 @@
 <template>
-  <div class="wrapper">
-    123213
+  <div class="community">
+    adsga
   </div>
 </template>
 
@@ -20,5 +20,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.wrapper{}
+.community{
+  padding-bottom: 50px;
+}
 </style>
