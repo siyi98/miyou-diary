@@ -75,6 +75,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.wrapper {
+.van-tabbar {
+    border-width: 1px 0 0 0;
+    border-color: #9e9e9e7a;
+    border-style: solid;
 }
 </style>

@@ -12,16 +12,6 @@ export default {
     components: {
         MyTabbar
     },
-    props: {},
-    data() {
-        return {
-        }
-    },
-    watch: {},
-    computed: {},
-    methods: {},
-    created() { },
-    mounted() { }
 }
 </script>
 <style lang="scss" scoped>
