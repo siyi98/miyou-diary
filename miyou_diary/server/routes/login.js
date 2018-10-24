@@ -4,7 +4,7 @@ const {
   query
 } = require('../database/mysql')
 
-router.prefix('/login')
+// router.prefix('/login')
 
 router.get('/', (ctx, next) => {
 

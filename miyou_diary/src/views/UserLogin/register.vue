@@ -1,5 +1,9 @@
 <template>
-    <div class="wrapper">bbb</div>
+    <div class="wrapper">
+        <form>
+            <input value="" placeholder="请输入用户名">
+        </form>
+    </div>
 </template>
 
 <script>
