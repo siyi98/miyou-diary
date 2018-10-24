@@ -1,10 +1,31 @@
 const mysql = require('mysql')
 const pool = mysql.createPool({
-  host: 'localhost', //主机
-  user: 'root', // 数据库用户名
-  password: 'zhusijia', //数据库密码
-  database: 'miyou', //数据库名称
-  multipleStatements: true, //允许执行多条查询语句
+  host: '127.0.0.1',
+  user: 'root',
+  password: 'zhusijia',
+  database: 'miyou'
 })
 
-module.exports = pool;
+let query = function (sql, values) {
+  return new Promise((resolve, reject) => {
+    pool.getConnection(function (err, connection) {
+      if (err) {
+        reject(err)
+      } else {
+        connection.query(sql, values, (err, rows) => {
+          if (err) {
+            reject(err)
+          } else {
+            resolve(rows)
+          }
+          //释放连接
+          connection.release()
+        })
+      }
+    })
+  })
+}
+
+module.exports = {
+  query
+}

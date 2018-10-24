@@ -1,31 +1,29 @@
 const router = require('koa-router')()
-const pool = require('../database/mysql')
+// const pool = require('../database/mysql')
+const {
+  query
+} = require('../database/mysql')
 
 router.prefix('/login')
 
 router.get('/', (ctx, next) => {
 
-  pool.getConnection((err, connection ) => {
-    connection.query("select * from register", function (err, rows) {
-      if (err) {
-        throw err;
-      } else {
-        return Promise.resolve(rows)
-      }
-    }).then((rows) => {
-      // console.log(rows);
-      let results = JSON.stringify(rows);
-      results = JSON.parse(results)
-      console.log(Array.isArray(results));
-      return ctx.body = {
-        code: 0,
-        msg: '成功',
-        data: rows
-      }
-    })
-    //释放连接
-    connection.release();
-  })
+  async function selectAllData() {
+    let sql = 'SELECT * FROM register'
+    let dataList = await query(sql)
+    return dataList
+  }
+
+  async function getData() {
+    let dataList = await selectAllData()
+    
+    dataList = JSON.stringify(dataList)
+    dataList = JSON.parse(dataList)
+    console.log(dataList)
+  }
+  getData()
+
 })
 
-module.exports = router;
+
+module.exports = router
