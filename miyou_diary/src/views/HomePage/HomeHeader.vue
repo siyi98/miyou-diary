@@ -104,10 +104,10 @@ img {
     float: right;
     margin-right: 20px;
 }
-.home_header_left{
+.home_header_left {
     display: inline-block;
     position: relative;
-    left: 20px
+    left: 20px;
 }
 .extends_space {
     position: absolute;
