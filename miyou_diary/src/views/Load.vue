@@ -2,16 +2,17 @@
   <div class="load">
     <div class="load_body">
       <div class="itemChoose">
-        <router-link to="/login">Login</router-link>
-        <router-link to="/register">Register</router-link>
+        <router-link to="/login" class="routerLink">Login</router-link>
+        <router-link to="/register" class="routerLink">Register</router-link>
       </div>
-      <div class="van-hairline--top"></div>
+
       <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
+
 export default {
   components: {},
   props: {},
@@ -41,5 +42,9 @@ export default {
     width: 70%;
     text-align: center;
     background-image: none;
+}
+.routerLink{
+  display: inline-block;
+  font-size: 25px;
 }
 </style>

@@ -7,8 +7,10 @@ const connection = require('../database/mysql');
 router.post('/', function (req, res, next) {
   console.log(req.body);
   let params = req.body;
+  
   let paramsArr = []
-  connection.query('select * from userList', function (err, result) {
+  let addData = 'insert into seckill(name,number) values(?,?)'
+  connection.query(addData,paramsArr, function (err, result) {
     if (err) {
       res.json({
         status: '1',
