@@ -1,8 +1,10 @@
 <template>
-  <div class="wrapper">
+  <div class="load">
     <div class="load_body">
-      <router-link to="/login">Login</router-link>
-      <router-link to="/register">Register</router-link>
+      <div class="itemChoose">
+        <router-link to="/login">Login</router-link>
+        <router-link to="/register">Register</router-link>
+      </div>
       <div class="van-hairline--top"></div>
       <router-view></router-view>
     </div>
@@ -25,7 +27,7 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-.wrapper {
+.load {
     height: 100%;
     width: 100%;
     background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
