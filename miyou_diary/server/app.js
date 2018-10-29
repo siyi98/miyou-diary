@@ -28,7 +28,7 @@ app.set('view engine', 'ejs');
 // 使用bodyparder中间件，
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-  extended: true
+  extended: false
 }));
 
 // 使用 session 中间件

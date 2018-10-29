@@ -18,24 +18,24 @@
         <div class="formField">
             <form>
                 <div>
-                    <input type="text" placeholder="用户名" required>
+                    <input type="text" v-model="regData.username" placeholder="用户名" required>
                 </div>
                 <div>
-                    <input type="password" placeholder="密码">
+                    <input type="password" v-model="regData.password" placeholder="密码">
                 </div>
                 <div>
-                    <input type="text" placeholder="昵称">
+                    <input type="text" v-model="regData.name" placeholder="昵称">
                 </div>
                 <div>
-                    <input type="email" placeholder="邮箱">
+                    <input type="email" v-model="regData.email" placeholder="邮箱">
                 </div>
                 <div>
-                    <input type="tel" placeholder="手机号">
-                </div>
-                <div>
-                    <input type="tel" placeholder="性别">
+                    <input type="tel" v-model="regData.tel" placeholder="手机号">
                 </div>
 
+                <div>
+                    <button type="submit" v-model="regData.username" class="submit" @click="onSubmit()">注 &nbsp &nbsp &nbsp册</button>
+                </div>
             </form>
         </div>
 
@@ -51,39 +51,46 @@ export default {
     props: {},
     data() {
         return {
-            formData: {
+            regData: {
                 username: '',
                 password: '',
                 name: '',
                 email: '',
                 tel: '',
-                radio: '1'
             }
         }
     },
     watch: {},
     computed: {},
     methods: {
-        submit() {
+        onSubmit() {
             // axios.post('http://localhost:3000/register', this.formData)
             axios({
                 url: 'http://localhost:3000/register',
                 method: 'post',
-                data: this.formData,
+                params: this.regData,
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
+                    'Content-Type': 'application/x-www-form-urlencoded;charset:utf-8'
                 }
             })
                 .then((res) => {
                     let _this = this;
-                    console.log(res.data);
+                    console.log(res);
                     if (res.data.status === '0') {
-                        Toast.success('注册成功');
+                        Toast.fail({
+                            message: '注册成功',
+                            duration: 2000,
+                            mask: true
+                        })
                         setTimeout(function () {
                             _this.$router.push('/app')
                         }, 2000)
                     } else if (res.data.status === '1') {
-                        Toast.error('注册失败')
+                        Toast.fail({
+                            message: '注册失败',
+                            duration: 2000,
+                            mask: true
+                        })
                     }
                 })
                 .catch((error) => {
@@ -109,7 +116,8 @@ input::-webkit-input-placeholder {
     text-align: center;
 }
 input {
-    color: #2196f3;
+    width: 90%;
+    color: #3f51b5;
     background: none;
     border: none;
     // border-bottom: 1px solid #ddd;
@@ -135,5 +143,16 @@ input:focus {
 }
 form > div {
     margin-top: 5%;
+}
+.submit {
+    width: 90%;
+    padding: 12px 0;
+    font-size: 18px;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    outline: none;
+    border-width: 0px; /* 边框宽度 */
+    border-radius: 3px; /* 边框半径 */
+    background: #1e90ff; /* 背景颜色 */
 }
 </style>
