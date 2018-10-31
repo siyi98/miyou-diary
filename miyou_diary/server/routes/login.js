@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const connection = require('../database/mysql');
+const query = require('../database/mysql');
 
 
-/* GET home page. */
-router.get('/', function (req, res, next) {
-  connection.connect();
-  
+router.post('/', function (req, res, next) {
+  console.log(req.body);
+  res.json({
+    status:'0',
+    message:'访问成功'
+  })
 });
 
 module.exports = router;

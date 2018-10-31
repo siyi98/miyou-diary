@@ -1,36 +1,52 @@
 <template>
     <div class="wrapper">
         <div>
-            <form class="formField" >
+            <div class="formField">
                 <div>
-                    <input v-model="loginData.username" type="text" placeholder="请输入用户名">
+                    <input v-model="username" type="text" placeholder="请输入用户名">
                 </div>
                 <div>
-                    <input v-model="loginData.password" type="password" placeholder="请输入密码">
+                    <input v-model="password" type="password" placeholder="请输入密码">
                 </div>
                 <div>
-                    <button type="submit" class="submit">登 &nbsp &nbsp &nbsp录</button>
+                    <button class="submit" @click="login()">登 &nbsp &nbsp &nbsp录</button>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+
 export default {
     data() {
         return {
-            loginData: {
-                username: '',
-                password: ''
-            }
+            username: '',
+            password: ''
         }
     },
-    methods: {},
+    methods: {
+        login() {
+            let _this = this;
+            let loginData = {
+                username: _this.username,
+                password: _this.password
+            }
+            _this.$axios({
+                url: 'http://localhost:3000/login',
+                method: 'post',
+                data: loginData
+            })
+                .then((res) => {
+                    console.log(res);
+
+                })
+        }
+    },
 }
 </script>
 <style lang="scss" scoped>
-form > div {
+.formField > div {
     margin-top: 15%;
 }
 .formField {

@@ -16,7 +16,7 @@ const app = express();
 //响应头设置
 app.all('*', function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*'); //设置允许访问的来源
-  // res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
+  res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
   res.header("Access-Control-Allow-Methods", "POST,GET,DELETE,OPTIONS,PUT"); //设置允许访问的请求方式
   next();
 })

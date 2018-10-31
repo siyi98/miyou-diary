@@ -5,17 +5,20 @@ import App from './App'
 import router from './router'
 import Vant from 'vant'
 import 'vant/lib/vant-css/index.css'
+import axios from 'axios'
 
 Vue.use(Vant)
 Vue.config.productionTip = false
+//将axios绑定到vue的原型链上
+Vue.prototype.$axios = axios
+
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
-  components: { App },
+  components: {
+    App
+  },
   template: '<App/>'
 })
-
-
-

@@ -1,37 +1,33 @@
 const express = require('express');
 const router = express.Router();
-const connection = require('../database/mysql');
+const query = require('../database/mysql')
 
 
-/* GET home page. */
 router.post('/', function (req, res, next) {
-  console.log(req.query)
-  // console.log(JSON.parse(req.body));
-  // console.log(req)
-  // let params = req.body;
-  // let dataArr = [
-  //   params.username,
-  //   params.password,
-  //   params.name,
-  //   params.email,
-  //   params.tel
-  // ]
+  console.log(req.body)
+  console.log(req.body.username)
+  let sql = 'INSERT INTO userlist (userName,passWord,name,email,phone) VALUES(?,?,?,?,?)';
+  let sqlParams = [
+    req.body.username,
+    req.body.password,
+    req.body.name,
+    req.body.email,
+    req.body.tel
+  ]
+  query(sql,sqlParams,function(err,result){
+    if(err){
+      res.json({
+        status:'1',
+        message:'注册失败！'
+      })
+    }else{
+      res.json({
+        status:'0',
+        message:'注册成功！'
+      })
+    }
+  })
 
-  // let addData = 'insert into userList(userId,userName,passWord,name,email,phone) VALUE(0,?,?,?,?,?)'
-  // connection.query(addData, dataArr, function (err, result) {
-  //   if (err) {
-  //     res.json({
-  //       status: '1',
-  //       err: err.message
-  //     })
-  //   } else {
-  //     res.json({
-  //       status: '0',
-  //       result,
-  //     })
-  //   }
-  // })
-  //   connection.end();
 });
 
 module.exports = router;
