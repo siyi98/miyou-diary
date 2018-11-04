@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session')
 const bodyParser = require('body-parser')
+// const cors = require('cors')
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -13,13 +14,16 @@ const registerRouter = require('./routes/register')
 
 const app = express();
 
-//响应头设置
+//跨域设置
 app.all('*', function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*'); //设置允许访问的来源
+  res.header('Access-Control-Allow-Origin', 'http://localhost:8080'); //设置允许访问的来源
   res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
   res.header("Access-Control-Allow-Methods", "POST,GET,DELETE,OPTIONS,PUT"); //设置允许访问的请求方式
+  res.header("Access-Control-Allow-Credentials", true);
+  // res.header("Cache-Control","no-cache")
   next();
 })
+// app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views')); //__dirname 总是指向被执行 js 文件的绝对路径
@@ -46,6 +50,7 @@ app.use(express.json());
 app.use(express.urlencoded({
   extended: false
 }));
+// app.use(cookieParser('this is the secret key for singed cookie'));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 

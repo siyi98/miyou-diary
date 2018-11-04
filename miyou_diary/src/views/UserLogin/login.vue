@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import { Toast } from 'vant'
 
 export default {
     data() {
@@ -39,7 +40,14 @@ export default {
             })
                 .then((res) => {
                     console.log(res);
-
+                    if (res.data.status === '0') {
+                        Toast.success('登陆成功！')
+                        setTimeout(() => {
+                            _this.$router.push('/app')
+                        }, 2000);
+                    } else {
+                        Toast.fail('登录失败')
+                    }
                 })
         }
     },

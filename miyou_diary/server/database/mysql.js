@@ -8,16 +8,14 @@ const pool = mysql.createPool({
   multipleStatements: true //是否允许一个query中有多个MySQL语句（默认为false）
 });
 
-// 封装数据库操作方法query---用于增删改查
+// 封装数据库操作方法
 const query = (sql, sqlParams, callback) => {
   pool.getConnection(function (err, connection) {
     if (err) {
       callback(err, null, null);
     } else {
       connection.query(sql, sqlParams, function (queryErr, vals, fields) {
-        //释放连接
-        connection.release();
-        //事件驱动回调
+        connection.release(); //释放连接
         callback(queryErr, vals, fields)
       })
     }

@@ -7,10 +7,12 @@ import Vant from 'vant'
 import 'vant/lib/vant-css/index.css'
 import axios from 'axios'
 
+axios.defaults.withCredentials = true;
 Vue.use(Vant)
 Vue.config.productionTip = false
 //将axios绑定到vue的原型链上
 Vue.prototype.$axios = axios
+
 
 
 /* eslint-disable no-new */
