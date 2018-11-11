@@ -1,6 +1,8 @@
 <template>
     <div class="mainBox">
-        <router-view></router-view>
+        <keep-alive>
+            <router-view></router-view>
+        </keep-alive>
         <my-tabbar></my-tabbar>
     </div>
 </template>
@@ -18,5 +20,6 @@ export default {
 .mainBox {
     padding-bottom: 50px;
     height: 100%;
+    width: 100%;
 }
 </style>

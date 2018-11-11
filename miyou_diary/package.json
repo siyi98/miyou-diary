@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "server": "node server/bin/www"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -15,9 +16,12 @@
     "less-loader": "^4.1.0",
     "node-sass": "^4.9.3",
     "sass-loader": "^7.1.0",
+    "socket-io": "^1.0.0",
+    "socket.io-client": "^2.1.1",
     "vant": "^1.2.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
+    "vue-socket.io": "^2.1.1-b",
     "vuex": "^3.0.1"
   },
   "devDependencies": {

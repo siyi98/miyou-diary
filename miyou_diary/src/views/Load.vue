@@ -5,7 +5,6 @@
         <router-link to="/login" class="routerLink">Login</router-link>
         <router-link to="/register" class="routerLink">Register</router-link>
       </div>
-
       <router-view></router-view>
     </div>
   </div>
@@ -18,13 +17,17 @@ export default {
   props: {},
   data() {
     return {
+      currentCity: ''
     }
   },
-  watch: {},
-  computed: {},
-  methods: {},
-  created() { },
-  mounted() { }
+  created() {
+
+  },
+  mounted() {
+  },
+  methods: {
+
+  }
 }
 </script>
 <style lang="less" scoped>
@@ -43,8 +46,8 @@ export default {
     text-align: center;
     background-image: none;
 }
-.routerLink{
-  display: inline-block;
-  font-size: 25px;
+.routerLink {
+    display: inline-block;
+    font-size: 25px;
 }
 </style>

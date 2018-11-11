@@ -17,7 +17,7 @@ export default {
                 {
                     icon: 'home',
                     name: '首页',
-                    path: '/',
+                    path: '/home',
                     pathname: 'Home',
                     dot: false,
                     info: ''
@@ -32,9 +32,9 @@ export default {
                 },
                 {
                     icon: 'chat',
-                    name: '消息',
-                    path: '/info',
-                    pathname: 'Info',
+                    name: '分享',
+                    path: '/share',
+                    pathname: 'Share',
                     dot: false,
                     info: ''
                 },

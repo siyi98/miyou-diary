@@ -13,7 +13,6 @@ function createId() {
 }
 
 router.get('/', function (req, res, next) {
-  console.log(req.session.user)
   if (req.session.user['username']) {
     let username = req.session.user['username'];
     let sql = "select * from diarylist where userName = '" + username + "' order by createdate desc"
@@ -32,6 +31,24 @@ router.get('/', function (req, res, next) {
       })
     })
   }
+})
+
+router.get('/getAll', function (req, res, next) {
+  let sql = "select * from diarylist where status = '1' order by createdate desc";
+  query(sql, null, function (err, result) {
+    if (err) {
+      res.json({
+        status: '1',
+        msg: err
+      })
+      return;
+    }
+    res.json({
+      status: '0',
+      result: result,
+      msg: '查询成功'
+    })
+  })
 })
 
 router.post('/add', function (req, res, next) {

@@ -9,7 +9,6 @@
 import HomeHeader from './HomeHeader'
 import HomeMain from './HomeMain'
 
-
 export default {
   components: {
     HomeHeader,
@@ -22,9 +21,22 @@ export default {
   },
   watch: {},
   computed: {},
-  methods: {},
-  created() { },
-  mounted() { }
+  methods: {
+    getDiaryStatus() {
+
+      this.$axios.get('http://localhost:3000/diary/getAll')
+        .then(res => {
+          console.log(res);
+          this.$store.commit('storageData', res.data.result)
+        })
+    }
+  },
+  created() {
+    this.getDiaryStatus()
+  },
+  mounted() {
+
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -36,7 +48,7 @@ export default {
     height: 8%;
     position: relative;
 }
-.header:after {
+.header::after {
     content: '  ';
     position: absolute;
     left: 0;
@@ -45,7 +57,7 @@ export default {
     height: 1px;
     background-color: rgb(161, 148, 148);
     -webkit-transform: scaleY(0.5);
-    transform: scaleY(0.5);//使用transform实现0.5px的边框效果
+    transform: scaleY(0.5); //使用transform实现0.5px的边框效果
 }
 .main {
     height: 92%;

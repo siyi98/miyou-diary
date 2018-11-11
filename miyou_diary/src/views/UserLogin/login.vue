@@ -42,6 +42,7 @@ export default {
                     console.log(res);
                     if (res.data.status === '0') {
                         Toast.success('登陆成功！')
+                        localStorage.setItem('userInfo', JSON.stringify(res.data.userInfo))
                         setTimeout(() => {
                             _this.$router.push('/app')
                         }, 2000);

@@ -3,23 +3,15 @@
         <div class="homeMain_body">
             <div class="homeMain_content">
                 <div class="content_box content_left" style="float:left">
-
-                    <section class="section_left diary" @click="linkTo('diary')"></section>
+                    <section class="section_left diary" @click="navigatorTo('diary')"></section>
                     <p>我的日记本</p>
-
-                    <section class="section_left bill" @click="linkTo('diaryDetail')"></section>
-                    <p>我的小账本</p>
-
                 </div>
-
                 <div class="content_box content_right" style="float:right;display:block;" to="/oneself">
-                    <section class="section_right deal"></section>
-                    <p>待办（5）</p>
+                    <section class="section_right deal" @click="navigatorTo('account')"></section>
+                    <p>我的小账本</p>
                 </div>
-
             </div>
         </div>
-
         <!-- 遮罩层 -->
         <!-- <div class="popContainer" v-if="onShow"></div> -->
     </div>
@@ -35,11 +27,11 @@ export default {
     watch: {},
     computed: {},
     methods: {
-        linkTo(arg) {
-            if (arg === 'diary') {
+        navigatorTo(arg) {
+            if (arg == 'diary') {
                 this.$router.push('/diary')
-            } else if (arg === 'diaryDetail') {
-                this.$router.push('/diary/diaryDetail')
+            } else if (arg == 'account') {
+                this.$router.push('/account')
             }
         }
     },
@@ -58,9 +50,8 @@ export default {
 }
 .homeMain_content {
     position: relative;
-
     height: 100%;
-    top: 5%;
+    padding-top: 20%;
 }
 .content_box {
     width: 45%;
@@ -79,8 +70,9 @@ export default {
 }
 section {
     width: 100%;
-    height: 20%;
-    background: #2196f3;
+    height: 30%;
+    border-radius: 8px;
+    box-shadow: 0 0 3px 2px #607d8b;
 }
 .section_left {
     float: left;
@@ -96,5 +88,17 @@ section {
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.3);
+}
+.content_left > section {
+    background-image: url('./../../assets/diary.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.content_right > section {
+    background-image: url('./../../assets/diary.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 }
 </style>

@@ -4,15 +4,19 @@ import Main from '../views/Main.vue'
 
 import Home from '../views/HomePage/HomePage.vue'
 import Commun from '../views/Community/Community.vue'
-import Info from '../views/InfoMation/InfoMation.vue'
+import Share from '../views/InfoMation/InfoMation.vue'
 import OneSelf from '../views/OneSelf/OneSelf.vue'
 
 import Diary from '../components/Diary/Diary.vue'
 import DiaryDetail from '../components/Diary/DiaryDetail.vue'
+import EditDiary from '../components/Diary/EditDiary.vue'
+
+import Account from '../components/Account/Account.vue'
 
 import Load from '../views/Load.vue'
 import Login from '../views/UserLogin/login.vue'
 import Register from '../views/UserLogin/register.vue'
+
 
 Vue.use(Router)
 
@@ -21,8 +25,8 @@ export default new Router({
   routes: [{
     path: '/',
     name: 'Load',
-    component:Load,
-    redirect:'login',
+    component: Load,
+    redirect: 'login',
     children: [{
       path: '/login',
       name: 'Login',
@@ -48,9 +52,9 @@ export default new Router({
         component: Commun
       },
       {
-        path: '/info',
-        name: 'Info',
-        component: Info
+        path: '/share',
+        name: 'Share',
+        component: Share
       },
       {
         path: '/oneself',
@@ -62,10 +66,17 @@ export default new Router({
     path: '/diary',
     name: 'Diary',
     component: Diary,
-    children: [{
-      path: 'diaryDetail',
-      name: 'DiaryDetail',
-      component: DiaryDetail,
-    }]
-  }, ]
+  }, {
+    path: '/diaryDetail',
+    name: 'DiaryDetail',
+    component: DiaryDetail
+  }, {
+    path: '/editDiary',
+    name: 'EditDiary',
+    component: EditDiary
+  }, {
+    path: '/account',
+    name: 'Account',
+    component: Account
+  }]
 })
