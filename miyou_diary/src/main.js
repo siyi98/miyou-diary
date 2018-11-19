@@ -8,10 +8,13 @@ import 'vant/lib/vant-css/index.css';
 import axios from 'axios';
 // import Vuex from 'vuex';
 import store from './store/store.js';
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+
 
 // Vue.use(Vuex);
 axios.defaults.withCredentials = true; //设置跨域访问时，请求头中携带cookie
 Vue.use(Vant);
+Vue.use(VueAwesomeSwiper)
 Vue.config.productionTip = false;
 //将axios绑定到vue的原型链上
 Vue.prototype.$axios = axios;

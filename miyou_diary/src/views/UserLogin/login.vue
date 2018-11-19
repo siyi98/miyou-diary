@@ -34,7 +34,7 @@ export default {
                 password: _this.password
             }
             _this.$axios({
-                url: 'http://localhost:3000/login',
+                url: 'http://47.93.45.54:3000/login',
                 method: 'post',
                 data: loginData
             })

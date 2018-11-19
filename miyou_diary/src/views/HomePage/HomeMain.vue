@@ -7,8 +7,8 @@
                     <p>我的日记本</p>
                 </div>
                 <div class="content_box content_right" style="float:right;display:block;" to="/oneself">
-                    <section class="section_right deal" @click="navigatorTo('account')"></section>
-                    <p>我的小账本</p>
+                    <section class="section_right deal" @click="navigatorTo('weather')"></section>
+                    <p>天气预报</p>
                 </div>
             </div>
         </div>
@@ -30,8 +30,8 @@ export default {
         navigatorTo(arg) {
             if (arg == 'diary') {
                 this.$router.push('/diary')
-            } else if (arg == 'account') {
-                this.$router.push('/account')
+            } else if (arg == 'weather') {
+                this.$router.push('/weather')
             }
         }
     },

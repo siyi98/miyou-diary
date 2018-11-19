@@ -11,7 +11,7 @@ import Diary from '../components/Diary/Diary.vue'
 import DiaryDetail from '../components/Diary/DiaryDetail.vue'
 import EditDiary from '../components/Diary/EditDiary.vue'
 
-import Account from '../components/Account/Account.vue'
+import Weather from '../components/Weather/Weather.vue'
 
 import Load from '../views/Load.vue'
 import Login from '../views/UserLogin/login.vue'
@@ -75,8 +75,8 @@ export default new Router({
     name: 'EditDiary',
     component: EditDiary
   }, {
-    path: '/account',
-    name: 'Account',
-    component: Account
+    path: '/weather',
+    name: 'Weather',
+    component: Weather
   }]
 })

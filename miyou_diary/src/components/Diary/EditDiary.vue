@@ -58,7 +58,7 @@ export default {
             let weekNum = weekday[week - 1]
             let arr = date.split(' ')[0].split('/')
             let str = arr[1] + '月' + arr[2] + '日'
-            this.$axios.post('http://localhost:3000/diary/add', {
+            this.$axios.post('http://47.93.45.54:3000/diary/add', {
                 text: that.text,
                 date: str,
                 weekday: weekNum

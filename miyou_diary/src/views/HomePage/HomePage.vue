@@ -24,7 +24,7 @@ export default {
   methods: {
     getDiaryStatus() {
 
-      this.$axios.get('http://localhost:3000/diary/getAll')
+      this.$axios.get('http://47.93.45.54:3000/diary/getAll')
         .then(res => {
           console.log(res);
           this.$store.commit('storageData', res.data.result)

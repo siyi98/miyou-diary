@@ -29,7 +29,6 @@
 </template>
 
 <script>
-// import axios from 'axios'
 import { Toast } from 'vant';
 
 
@@ -57,9 +56,9 @@ export default {
                 email: this.email,
                 tel: this.tel
             }
-            // axios.post('http://localhost:3000/register', data)
+            
             _this.$axios({
-                url: 'http://localhost:3000/register',
+                url: 'http://47.93.45.54:3000/register',
                 method: 'post',
                 data: formData,
             })

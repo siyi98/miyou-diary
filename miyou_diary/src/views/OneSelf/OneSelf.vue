@@ -1,19 +1,6 @@
 <template>
     <div class="setting">
         <div class="setting_header">
-            <div class="setting_weather">
-                <div class="location">
-                    <p class="location_info">
-                        <span>{{selfLocation.province}}</span> <span>{{selfLocation.city}}</span>
-                    </p>
-                    <p class="location_info">
-                        <span>{{selfLocation.weekDay}}</span>
-                    </p>
-                </div>
-                <div class="weather_info">
-
-                </div>
-            </div>
             <div class="setting_header_img">
                 <img :src="imgSrc" alt="">
             </div>
@@ -71,28 +58,9 @@ export default {
     watch: {},
     computed: {},
     methods: {
-        addressDetail() {
-            let that = this;
-            let date = new Date().getDay();
-            let dayIndex = date - 1;
-            //浏览器定位
-            let map = new BMap.Map();
-            let geolocation = new BMap.Geolocation();
-            geolocation.getCurrentPosition((res) => {
-                if (geolocation.getStatus() == BMAP_STATUS_SUCCESS) {
-                    console.log(res)
-                    that.selfLocation.city = res.address.city;
-                    that.selfLocation.province = res.address.province;
-                    that.selfLocation.weekDay = that.weekDay[dayIndex];
-                    // console.log(that.selfLocation);
-                }
-                else {
-                    alert('failed' + this.getStatus());
-                }
-            })
-        },
+
         cancelConfirm() {
-            this.$axios.get('http://localhost:3000/login/cancel')
+            this.$axios.get('http://47.93.45.54:3000/login/cancel')
                 .then((res) => {
                     console.log(res)
                     if (res.data.status == '0') {
@@ -125,12 +93,9 @@ export default {
         let that = this;
         this.userInfo = JSON.parse(localStorage.getItem('userInfo'));
         console.log(this.userInfo);
-
-
     },
     mounted() {
 
-        this.addressDetail();
     }
 }
 </script>
@@ -186,12 +151,9 @@ export default {
     width: 100%;
     display: flex;
     justify-content: center;
-}
-.setting_weather {
     background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
-    width: 100%;
-    height: 100%;
 }
+
 .setting_header_img {
     position: absolute;
     width: 70px;

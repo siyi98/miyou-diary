@@ -33,7 +33,9 @@
                     <div class="center_top middle">
                         <span class="date fontColor">{{item.date}}</span>
                         <span class="weekDay fontColor">{{item.weekday}}</span>
-                        
+                        <div class="btn-share">
+                            <button class="btn" @click.self.prevent="shareDiary(item.diaryId)">分享</button>
+                        </div>
                     </div>
                     <div class="center_bottom middle">
                         <p class="content">{{item.content}}</p>
@@ -45,7 +47,7 @@
 </template>
 
 <script>
-import { Dialog } from 'vant';
+import { Dialog, Toast } from 'vant';
 import PubHeader from '../PubHeader.vue'
 export default {
     components: {
@@ -80,13 +82,34 @@ export default {
         },
         getDiaryList() {
             let that = this;
-            this.$axios.get('http://localhost:3000/diary')
+            this.$axios.get('http://47.93.45.54:3000/diary')
                 .then((res) => {
                     if (res.data.status == '0') {
                         this.diaryList = res.data.result;
                     }
                 })
-        }
+        },
+        shareDiary(diaryId) {
+            Dialog.confirm({
+                title: '是否将此日记分享供他人观看？',
+                confirmButtonText: 'Yes',
+                cancelButtonText: 'No',
+                closeOnClickOverlay: true
+            }).then(async () => {
+                let res = await this.$axios.post('http://47.93.45.54:3000/diary/toshare', {
+                    id: diaryId
+                })
+                if (res.data.status == '1') {
+                    Toast('分享失败')
+                    return;
+                } else if (res.data.status == '0') {
+                    Toast('分享成功');
+                    setTimeout(() => {
+                        this.$router.push('/share')
+                    }, 1200)
+                }
+            })
+        },
     },
     created() { },
     mounted() {
@@ -183,5 +206,19 @@ p {
 .center {
     margin: auto;
     width: 100%;
+}
+.btn-share {
+    display: inline-block;
+    position: relative;
+    float: right;
+    right: 10%;
+}
+.btn {
+    border: none;
+    background: red;
+    color: white;
+    border-radius: 3px;
+    width: 50px;
+    height: 25px;
 }
 </style>

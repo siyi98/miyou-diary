@@ -44,7 +44,7 @@ export default {
             this.$router.back(-1)
         },
         getDiaryContent(diaryId) {
-            this.$axios.post('http://localhost:3000/diary/search', {
+            this.$axios.post('http://47.93.45.54:3000/diary/search', {
                 diaryId: diaryId
             })
                 .then(res => {

@@ -101,4 +101,23 @@ router.post('/search', function (req, res, next) {
   })
 })
 
+router.post('/toshare', function (req, res, next) {
+  console.log(req.body);
+  let id = req.body.id;
+  let sql = "UPDATE diarylist SET status = '1' WHERE diaryId = '" + id + "'";
+  query(sql, null, function (err, result) {
+    if (err) {
+      res.json({
+        status: '1',
+        msg: err
+      })
+      return;
+    }
+    res.json({
+      status: '0',
+      msg: '分享成功'
+    })
+  })
+})
+
 module.exports = router

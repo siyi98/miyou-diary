@@ -24,6 +24,7 @@
 </template>
 
 <script>
+
 import PubHeader from './../../components/PubHeader'
 export default {
   components: {
